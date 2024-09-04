@@ -36,6 +36,10 @@ namespace ABC {
       std::cout << "Hello from ABC::DEF::bar: " << a << std::endl;
     }
 
+    void spam(int a) {
+      std::cout << "Hello from ABC::DEF::spam: " << a << std::endl;
+    }
+
     // We define a function uses_bar inside the ABC::DEF namespace. However, since
     // bar is in the same namespace as uses_bar (they're both in the ABC::DEF
     // namespace), the function bar is just referred to by its name in the
@@ -46,18 +50,17 @@ namespace ABC {
     }
 
     // We define a function uses_spam in the ABC::DEF namespace. To refer to 
-    // ABC::spam from the ABC::DEF namespace, we have no other option but to
-    // refer to it by its full identifier. Attempting to refer to it by spam
-    // will result in a compilation error, stating that no function called spam
-    // or ABC::DEF::spam exists. Note that it is possible to refer to every
-    // function by its full identifier, but doing this makes coding speed 
-    // inefficient.
+    // ABC::spam from the ABC::DEF namespace, we can use spam(a). There is 
+    // documentation governing the unqualified lookup order on:
+    // https://en.cppreference.com/w/cpp/language/unqualified_lookup
+    // Note that it is possible to refer to every function by its full identifier, 
+    // but doing this makes coding speed inefficient.
     void uses_spam(int a) {
       std::cout << "Hello from uses_spam: ";
       ABC::spam(a);
 
       // Try uncommenting this code, which calls spam(a), here.
-      // spam(a);
+      spam(a);
     }
   }
 
