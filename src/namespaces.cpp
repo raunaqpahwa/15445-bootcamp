@@ -31,7 +31,7 @@ namespace ABC {
   // ABC. The syntax for declaring a nested namespace is identical to the syntax of
   // declaring a non-nested namespace.
   namespace DEF {
-    // We define a function bar inside the N::M namespace.
+    // We define a function bar inside the ABC::DEF namespace.
     void bar(float a) {
       std::cout << "Hello from ABC::DEF::bar: " << a << std::endl;
     }
